@@ -1,5 +1,6 @@
-import subprocess
+import subprocess, csv
 def invokePowershell(args):
-    command = "powershell.exe %s" % (args)
+    module = "Import-Module <SOMEMODULE> -DisableNameChecking"
+    command = "powershell.exe %s;%s" % (module,args)
     output = subprocess.check_output(command)
     return output.decode('ascii')
